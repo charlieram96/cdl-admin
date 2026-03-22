@@ -5,8 +5,9 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/questions', label: 'Questions', icon: '📝' },
-  { href: '/keywords', label: 'Keywords', icon: '🔑' },
+  { href: '/questions', label: 'Questions' },
+  { href: '/keywords', label: 'Keywords' },
+  { href: '/glossary', label: 'Glossary' },
 ];
 
 export function Sidebar() {
@@ -31,7 +32,6 @@ export function Sidebar() {
                 : 'text-sidebar-foreground hover:bg-sidebar-accent/50'
             )}
           >
-            <span>{item.icon}</span>
             {item.label}
           </Link>
         ))}

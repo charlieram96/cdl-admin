@@ -66,6 +66,16 @@ export const QUESTION_TYPES: { value: QuestionType; label: string }[] = [
   { value: 'true_false', label: 'True / False' },
 ];
 
+export interface GlossaryEntry {
+  id: string;
+  termByLanguage: Record<string, string>;
+  definitionByLanguage: Record<string, string>;
+  exampleByLanguage: Record<string, string> | null;
+  sortOrder: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface Profile {
   id: string;
   displayName: string | null;

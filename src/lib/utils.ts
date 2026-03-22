@@ -96,6 +96,27 @@ export function keywordToRow(k: Partial<Keyword>) {
   return row;
 }
 
+export function mapGlossaryRow(row: any): import('@/types').GlossaryEntry {
+  return {
+    id: row.id,
+    termByLanguage: row.term_by_language ?? {},
+    definitionByLanguage: row.definition_by_language ?? {},
+    exampleByLanguage: row.example_by_language,
+    sortOrder: row.sort_order ?? 0,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+  };
+}
+
+export function glossaryEntryToRow(e: Partial<import('@/types').GlossaryEntry>) {
+  const row: Record<string, unknown> = {};
+  if (e.termByLanguage !== undefined) row.term_by_language = e.termByLanguage;
+  if (e.definitionByLanguage !== undefined) row.definition_by_language = e.definitionByLanguage;
+  if (e.exampleByLanguage !== undefined) row.example_by_language = e.exampleByLanguage;
+  if (e.sortOrder !== undefined) row.sort_order = e.sortOrder;
+  return row;
+}
+
 export function stripPunctuation(word: string): string {
   return word.replace(/[^a-zA-Z0-9'-]/g, '').toLowerCase();
 }
