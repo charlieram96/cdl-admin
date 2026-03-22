@@ -47,6 +47,7 @@ export default async function GlossaryPage() {
                 <TableHead>Term (EN)</TableHead>
                 <TableHead>Term (ES)</TableHead>
                 <TableHead>Definition (EN)</TableHead>
+                <TableHead>Definition (ES)</TableHead>
                 <TableHead className="w-[60px]">Order</TableHead>
                 <TableHead className="w-[80px]" />
               </TableRow>
@@ -67,6 +68,9 @@ export default async function GlossaryPage() {
                   </TableCell>
                   <TableCell className="max-w-xs truncate text-muted-foreground">
                     {entry.definitionByLanguage.en ?? '—'}
+                  </TableCell>
+                  <TableCell className="max-w-xs truncate text-muted-foreground">
+                    {entry.definitionByLanguage.es ?? '—'}
                   </TableCell>
                   <TableCell>{entry.sortOrder}</TableCell>
                   <TableCell>

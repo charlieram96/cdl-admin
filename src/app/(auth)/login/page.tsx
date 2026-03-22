@@ -62,7 +62,7 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-muted/40">
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">CDL Admin</CardTitle>
+          <CardTitle className="text-2xl">CDLingo Admin</CardTitle>
           <p className="text-sm text-muted-foreground">
             Sign in to manage questions and keywords
           </p>

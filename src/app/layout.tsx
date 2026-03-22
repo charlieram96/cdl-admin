@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CDL Admin",
-  description: "Admin dashboard for CDL Learning App",
+  title: "CDLingo Admin",
+  description: "Admin dashboard for CDLingo",
 };
 
 export default function RootLayout({

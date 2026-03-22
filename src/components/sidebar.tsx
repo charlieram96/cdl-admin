@@ -17,7 +17,7 @@ export function Sidebar() {
     <aside className="flex w-56 flex-col border-r bg-sidebar">
       <div className="flex h-14 items-center border-b px-4">
         <Link href="/questions" className="text-lg font-semibold">
-          CDL Admin
+          CDLingo Admin
         </Link>
       </div>
       <nav className="flex-1 space-y-1 p-3">
