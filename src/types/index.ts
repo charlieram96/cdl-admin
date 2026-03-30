@@ -54,6 +54,7 @@ export interface Question {
   keywords: string[];
   visualAssetIds: string[];
   videoUrl: string | null;
+  explanationVideoUrl: string | null;
   createdAt: string;
   updatedAt: string;
 }

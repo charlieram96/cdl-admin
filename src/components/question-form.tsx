@@ -49,6 +49,9 @@ export function QuestionForm({ topicId, question }: Props) {
   );
   const [keywords, setKeywords] = useState<string[]>(question?.keywords ?? []);
   const [videoUrl, setVideoUrl] = useState<string | null>(question?.videoUrl ?? null);
+  const [explanationVideoUrl, setExplanationVideoUrl] = useState<string | null>(
+    question?.explanationVideoUrl ?? null
+  );
   const [saving, setSaving] = useState(false);
 
   // For T/F, correctAnswerText is "true" or "false"
@@ -93,6 +96,7 @@ export function QuestionForm({ topicId, question }: Props) {
       keywords,
       visualAssetIds: question?.visualAssetIds ?? [],
       videoUrl,
+      explanationVideoUrl,
     };
 
     const result = isEdit
@@ -261,10 +265,22 @@ export function QuestionForm({ topicId, question }: Props) {
 
       <Separator />
 
-      {/* Video */}
+      {/* Hint Video */}
       <div className="space-y-2">
-        <Label>Video</Label>
+        <Label>Hint Video</Label>
+        <p className="text-sm text-muted-foreground">
+          Shown via the video icon while viewing the question.
+        </p>
         <VideoUploader videoUrl={videoUrl} onVideoChange={setVideoUrl} />
+      </div>
+
+      {/* Explanation Video */}
+      <div className="space-y-2">
+        <Label>Explanation Video</Label>
+        <p className="text-sm text-muted-foreground">
+          Auto-plays after the question is answered in study mode.
+        </p>
+        <VideoUploader videoUrl={explanationVideoUrl} onVideoChange={setExplanationVideoUrl} />
       </div>
 
       <Separator />

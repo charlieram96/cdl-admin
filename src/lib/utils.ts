@@ -26,6 +26,7 @@ export function mapQuestionRow(row: any): Question {
     keywords: row.keywords ?? [],
     visualAssetIds: row.visual_asset_ids ?? [],
     videoUrl: row.video_url,
+    explanationVideoUrl: row.explanation_video_url,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   };
@@ -81,6 +82,7 @@ export function questionToRow(q: Partial<Question>) {
   if (q.keywords !== undefined) row.keywords = q.keywords;
   if (q.visualAssetIds !== undefined) row.visual_asset_ids = q.visualAssetIds;
   if (q.videoUrl !== undefined) row.video_url = q.videoUrl;
+  if (q.explanationVideoUrl !== undefined) row.explanation_video_url = q.explanationVideoUrl;
   return row;
 }
 
