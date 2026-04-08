@@ -1,7 +1,6 @@
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
-import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default async function HomePage() {
@@ -22,10 +21,10 @@ export default async function HomePage() {
           </p>
         </CardHeader>
         <CardContent className="flex flex-col gap-3">
-          <Link href="/signup" className={buttonVariants({ className: "w-full" })}>
+          <Link href="/signup" className="inline-flex h-8 w-full items-center justify-center rounded-lg bg-primary px-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/80">
             Sign Up
           </Link>
-          <Link href="/login" className={buttonVariants({ variant: "outline", className: "w-full" })}>
+          <Link href="/login" className="inline-flex h-8 w-full items-center justify-center rounded-lg border border-border bg-background px-2.5 text-sm font-medium transition-all hover:bg-muted hover:text-foreground">
             Sign In
           </Link>
         </CardContent>
