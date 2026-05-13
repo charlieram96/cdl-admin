@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import type { Question, Keyword, Topic, ExamCategory } from '@/types';
+import type { Question, Keyword, Topic, ExamCategory, Category } from '@/types';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -16,6 +16,7 @@ export function mapQuestionRow(row: any): Question {
     englishText: row.english_text,
     phoneticText: row.phonetic_text ?? '',
     topicId: row.topic_id,
+    categoryId: row.category_id,
     type: row.type,
     correctAnswerText: row.correct_answer_text,
     choices: row.choices,
@@ -67,11 +68,19 @@ export function mapExamCategoryRow(row: any): ExamCategory {
   };
 }
 
+export function mapCategoryRow(row: any): Category {
+  return {
+    id: row.id,
+    nameByLanguage: row.name_by_language ?? {},
+  };
+}
+
 export function questionToRow(q: Partial<Question>) {
   const row: Record<string, unknown> = {};
   if (q.englishText !== undefined) row.english_text = q.englishText;
   if (q.phoneticText !== undefined) row.phonetic_text = q.phoneticText;
   if (q.topicId !== undefined) row.topic_id = q.topicId;
+  if (q.categoryId !== undefined) row.category_id = q.categoryId;
   if (q.type !== undefined) row.type = q.type;
   if (q.correctAnswerText !== undefined) row.correct_answer_text = q.correctAnswerText;
   if (q.choices !== undefined) row.choices = q.choices;

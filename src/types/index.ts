@@ -18,6 +18,11 @@ export interface ExamCategory {
   sortOrder: number;
 }
 
+export interface Category {
+  id: string;
+  nameByLanguage: Record<string, string>;
+}
+
 export type KeywordType = 'safety' | 'vehicle' | 'regulation' | 'procedure' | 'hazmat' | 'road' | 'signs' | 'general';
 
 export const KEYWORD_TYPES: KeywordType[] = ['safety', 'vehicle', 'regulation', 'procedure', 'hazmat', 'road', 'signs', 'general'];
@@ -44,6 +49,7 @@ export interface Question {
   englishText: string;
   phoneticText: string;
   topicId: string;
+  categoryId: string;
   type: 'multiple_choice' | 'fill_in_the_blank' | 'true_false';
   correctAnswerText: string;
   choices: string[] | null;

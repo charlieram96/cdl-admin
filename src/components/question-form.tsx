@@ -20,19 +20,21 @@ import { WordDataEditor } from '@/components/word-data-editor';
 import { KeywordInspector } from '@/components/keyword-inspector';
 import { VideoUploader } from '@/components/video-uploader';
 import { createQuestion, updateQuestion } from '@/app/(admin)/questions/actions';
-import type { Question, QuestionType, WordData } from '@/types';
+import type { Category, Question, QuestionType, WordData } from '@/types';
 import { QUESTION_TYPES } from '@/types';
 
 interface Props {
   topicId: string;
+  categories: Category[];
   question?: Question;
 }
 
-export function QuestionForm({ topicId, question }: Props) {
+export function QuestionForm({ topicId, categories, question }: Props) {
   const router = useRouter();
   const isEdit = !!question;
 
   const [englishText, setEnglishText] = useState(question?.englishText ?? '');
+  const [categoryId, setCategoryId] = useState(question?.categoryId ?? '');
   const [type, setType] = useState<QuestionType>(question?.type ?? 'multiple_choice');
   const [correctAnswerText, setCorrectAnswerText] = useState(
     question?.correctAnswerText ?? ''
@@ -76,12 +78,19 @@ export function QuestionForm({ topicId, question }: Props) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    if (!categoryId) {
+      toast.error('Please select a category');
+      return;
+    }
+
     setSaving(true);
 
     const data = {
       englishText,
       phoneticText: '',
       topicId,
+      categoryId,
       type,
       correctAnswerText: isTrueFalse ? correctAnswerText : correctAnswerText,
       choices: isMultipleChoice ? choices.filter((c) => c.trim()) : null,
@@ -127,6 +136,23 @@ export function QuestionForm({ topicId, question }: Props) {
           required
           placeholder="Enter the question text in English..."
         />
+      </div>
+
+      {/* Category */}
+      <div className="space-y-2">
+        <Label>Category</Label>
+        <Select value={categoryId} onValueChange={(v) => setCategoryId(v ?? '')}>
+          <SelectTrigger className="w-64">
+            <SelectValue placeholder="Select a category" />
+          </SelectTrigger>
+          <SelectContent>
+            {categories.map((cat) => (
+              <SelectItem key={cat.id} value={cat.id}>
+                {cat.nameByLanguage.en ?? cat.id}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
       {/* Question Type */}
